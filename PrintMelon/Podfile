@@ -1,0 +1,12 @@
+platform:ios,'8.0'
+use_frameworks!
+target "PrintMelon" do
+pod 'SVProgressHUD'
+pod 'SDWebImage'
+pod 'MJRefresh' 
+pod 'MJExtension'
+pod 'AFNetworking'
+pod 'FMDB'
+pod 'BaiduMapKit'
+end
+

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PersonalInfoViewController">
+            <connections>
+                <outlet property="headImageV" destination="j6i-HI-AtX" id="ugw-Fd-QsS"/>
+                <outlet property="nicknameLabel" destination="wun-LN-83a" id="fR8-cw-aD3"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0cs-g6-dVG">
+                    <rect key="frame" x="0.0" y="44" width="375" height="60"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal_center_head_icon" translatesAutoresizingMaskIntoConstraints="NO" id="IbE-Eg-PfY">
+                            <rect key="frame" x="15" y="10" width="21" height="23"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="头像" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="40i-3I-GLu">
+                            <rect key="frame" x="61" y="15" width="33" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="4AS-UR-yNx">
+                            <rect key="frame" x="351" y="16.5" width="9" height="17"/>
+                        </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="head_rect_icon" translatesAutoresizingMaskIntoConstraints="NO" id="j6i-HI-AtX">
+                            <rect key="frame" x="292" y="3" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="PYH-uY-lBC"/>
+                                <constraint firstAttribute="width" constant="44" id="aUx-Op-dFL"/>
+                            </constraints>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zG6-n1-oRj">
+                            <rect key="frame" x="15" y="59.5" width="345" height="0.5"/>
+                            <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.92156862745098034" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="hGm-sC-FR6"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstItem="4AS-UR-yNx" firstAttribute="leading" secondItem="j6i-HI-AtX" secondAttribute="trailing" constant="15" id="11K-nH-agi"/>
+                        <constraint firstAttribute="trailing" secondItem="4AS-UR-yNx" secondAttribute="trailing" constant="15" id="8mj-QG-LDO"/>
+                        <constraint firstItem="IbE-Eg-PfY" firstAttribute="leading" secondItem="0cs-g6-dVG" secondAttribute="leading" constant="15" id="KC7-gl-bV8"/>
+                        <constraint firstAttribute="trailing" secondItem="zG6-n1-oRj" secondAttribute="trailing" constant="15" id="NFh-mL-xb9"/>
+                        <constraint firstAttribute="height" constant="60" id="VaJ-tI-pSc"/>
+                        <constraint firstItem="j6i-HI-AtX" firstAttribute="centerY" secondItem="4AS-UR-yNx" secondAttribute="centerY" id="ZC8-0T-Jjx"/>
+                        <constraint firstItem="4AS-UR-yNx" firstAttribute="centerY" secondItem="40i-3I-GLu" secondAttribute="centerY" id="cGW-vp-Op5"/>
+                        <constraint firstItem="zG6-n1-oRj" firstAttribute="leading" secondItem="0cs-g6-dVG" secondAttribute="leading" constant="15" id="lJr-Uj-6wE"/>
+                        <constraint firstItem="40i-3I-GLu" firstAttribute="bottom" secondItem="IbE-Eg-PfY" secondAttribute="bottom" constant="2" id="oZS-BW-tNa"/>
+                        <constraint firstAttribute="bottom" secondItem="zG6-n1-oRj" secondAttribute="bottom" id="opo-iP-bmE"/>
+                        <constraint firstItem="40i-3I-GLu" firstAttribute="leading" secondItem="IbE-Eg-PfY" secondAttribute="trailing" constant="25" id="sIn-1A-XbO"/>
+                        <constraint firstItem="IbE-Eg-PfY" firstAttribute="top" secondItem="0cs-g6-dVG" secondAttribute="top" constant="10" id="xQP-Uf-5wx"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="Svu-l2-m61" appends="YES" id="iTP-jL-t5r"/>
+                    </connections>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8b-tk-ZoR">
+                    <rect key="frame" x="0.0" y="134" width="375" height="60"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="personal_center_nick_icon" translatesAutoresizingMaskIntoConstraints="NO" id="l5L-9D-gjo">
+                            <rect key="frame" x="15" y="10" width="21" height="21"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jku-Zp-E9g">
+                            <rect key="frame" x="61" y="13" width="33" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="common_right_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="UlM-aG-5MN">
+                            <rect key="frame" x="351" y="14.5" width="9" height="17"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sbf-wG-oGd">
+                            <rect key="frame" x="15" y="59.5" width="345" height="0.5"/>
+                            <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.92156862750000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="0.5" id="BgA-aS-V3i"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的昵称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wun-LN-83a">
+                            <rect key="frame" x="270" y="13" width="66" height="20"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="Sbf-wG-oGd" secondAttribute="bottom" id="5nj-3p-FKj"/>
+                        <constraint firstAttribute="trailing" secondItem="UlM-aG-5MN" secondAttribute="trailing" constant="15" id="DMB-En-1m1"/>
+                        <constraint firstItem="l5L-9D-gjo" firstAttribute="top" secondItem="L8b-tk-ZoR" secondAttribute="top" constant="10" id="Fqd-BO-oGh"/>
+                        <constraint firstItem="jku-Zp-E9g" firstAttribute="leading" secondItem="l5L-9D-gjo" secondAttribute="trailing" constant="25" id="GhH-Yc-TaZ"/>
+                        <constraint firstItem="wun-LN-83a" firstAttribute="centerY" secondItem="UlM-aG-5MN" secondAttribute="centerY" id="Hd1-oV-Ef3"/>
+                        <constraint firstItem="UlM-aG-5MN" firstAttribute="centerY" secondItem="jku-Zp-E9g" secondAttribute="centerY" id="Ii3-oy-GaV"/>
+                        <constraint firstItem="l5L-9D-gjo" firstAttribute="leading" secondItem="L8b-tk-ZoR" secondAttribute="leading" constant="15" id="dtf-xx-BYe"/>
+                        <constraint firstItem="jku-Zp-E9g" firstAttribute="bottom" secondItem="l5L-9D-gjo" secondAttribute="bottom" constant="2" id="fTY-at-Ivv"/>
+                        <constraint firstAttribute="trailing" secondItem="Sbf-wG-oGd" secondAttribute="trailing" constant="15" id="fvK-SS-Q0F"/>
+                        <constraint firstItem="UlM-aG-5MN" firstAttribute="leading" secondItem="wun-LN-83a" secondAttribute="trailing" constant="15" id="qNU-O7-Khr"/>
+                        <constraint firstItem="Sbf-wG-oGd" firstAttribute="leading" secondItem="L8b-tk-ZoR" secondAttribute="leading" constant="15" id="yzn-jO-eQE"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="yUr-nh-Q7r" appends="YES" id="Hfb-KY-U3y"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="0cs-g6-dVG" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="4Lv-cR-Egy"/>
+                <constraint firstItem="L8b-tk-ZoR" firstAttribute="trailing" secondItem="0cs-g6-dVG" secondAttribute="trailing" id="F0u-pk-K9c"/>
+                <constraint firstItem="0cs-g6-dVG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="24" id="L4F-r5-sv5"/>
+                <constraint firstItem="L8b-tk-ZoR" firstAttribute="height" secondItem="0cs-g6-dVG" secondAttribute="height" id="Vw9-cZ-lNu"/>
+                <constraint firstItem="L8b-tk-ZoR" firstAttribute="top" secondItem="0cs-g6-dVG" secondAttribute="bottom" constant="30" id="Y4X-i8-LOY"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="0cs-g6-dVG" secondAttribute="trailing" id="mzS-iX-XeA"/>
+                <constraint firstItem="L8b-tk-ZoR" firstAttribute="leading" secondItem="0cs-g6-dVG" secondAttribute="leading" id="r8e-ea-zXx"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="39.200000000000003" y="46.326836581709152"/>
+        </view>
+        <tapGestureRecognizer id="Svu-l2-m61">
+            <connections>
+                <action selector="headImgClick:" destination="-1" id="27z-1X-DxP"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="yUr-nh-Q7r">
+            <connections>
+                <action selector="nicknameClick:" destination="-1" id="1t6-7Y-C7h"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="common_right_arrow" width="9.5" height="17"/>
+        <image name="head_rect_icon" width="44" height="44"/>
+        <image name="personal_center_head_icon" width="21.5" height="23"/>
+        <image name="personal_center_nick_icon" width="21.5" height="21"/>
+    </resources>
+</document>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="myDocCell" rowHeight="66" id="KGk-i7-Jjw" customClass="MyDocCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="59.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="doc_icon" translatesAutoresizingMaskIntoConstraints="NO" id="IwX-lG-A4m">
+                        <rect key="frame" x="15" y="14.5" width="29" height="31"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="文档名字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fpf-xg-dpH">
+                        <rect key="frame" x="54" y="12.5" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="页数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cUW-M5-dnP">
+                        <rect key="frame" x="54" y="33.5" width="23" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="时间" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NfU-xu-uai">
+                        <rect key="frame" x="77" y="33.5" width="23" height="14"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="print_select_icon" translatesAutoresizingMaskIntoConstraints="NO" id="RYC-1l-sD4">
+                        <rect key="frame" x="344" y="22" width="16" height="16"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFx-an-DRo">
+                        <rect key="frame" x="0.0" y="54.5" width="375" height="5"/>
+                        <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="5" id="Cth-15-6VU"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="IwX-lG-A4m" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="4Jz-qA-R5U"/>
+                    <constraint firstAttribute="bottom" secondItem="EFx-an-DRo" secondAttribute="bottom" id="6rS-Bf-6P0"/>
+                    <constraint firstItem="cUW-M5-dnP" firstAttribute="leading" secondItem="Fpf-xg-dpH" secondAttribute="leading" id="7bF-HN-1Ws"/>
+                    <constraint firstItem="Fpf-xg-dpH" firstAttribute="top" secondItem="IwX-lG-A4m" secondAttribute="top" constant="-2" id="F9c-ST-HAL"/>
+                    <constraint firstItem="NfU-xu-uai" firstAttribute="leading" secondItem="cUW-M5-dnP" secondAttribute="trailing" id="H6z-CT-Jdr"/>
+                    <constraint firstItem="NfU-xu-uai" firstAttribute="centerY" secondItem="cUW-M5-dnP" secondAttribute="centerY" id="IZT-VB-ZGl"/>
+                    <constraint firstAttribute="trailing" secondItem="RYC-1l-sD4" secondAttribute="trailing" constant="15" id="NUO-GD-yRB"/>
+                    <constraint firstItem="Fpf-xg-dpH" firstAttribute="leading" secondItem="IwX-lG-A4m" secondAttribute="trailing" constant="10" id="QVq-XH-VWQ"/>
+                    <constraint firstAttribute="trailing" secondItem="EFx-an-DRo" secondAttribute="trailing" id="QiL-bh-q6O"/>
+                    <constraint firstItem="EFx-an-DRo" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="YdM-gr-auJ"/>
+                    <constraint firstItem="cUW-M5-dnP" firstAttribute="bottom" secondItem="IwX-lG-A4m" secondAttribute="bottom" constant="2" id="d4V-8V-FYd"/>
+                    <constraint firstItem="IwX-lG-A4m" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="qA6-sB-Tfg"/>
+                    <constraint firstItem="RYC-1l-sD4" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="sg8-Ly-KTA"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="docNameLabel" destination="Fpf-xg-dpH" id="VOW-Sk-b0R"/>
+                <outlet property="docPageNumLabel" destination="cUW-M5-dnP" id="zEh-Sf-U2r"/>
+                <outlet property="docTimeLabel" destination="NfU-xu-uai" id="iYg-gk-oWd"/>
+                <outlet property="selectedImageV" destination="RYC-1l-sD4" id="daK-Bj-yia"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="164.6176911544228"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="doc_icon" width="29.5" height="31.5"/>
+        <image name="print_select_icon" width="16" height="16"/>
+    </resources>
+</document>

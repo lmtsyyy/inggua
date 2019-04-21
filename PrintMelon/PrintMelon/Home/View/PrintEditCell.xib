@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="printEditCell" id="KGk-i7-Jjw" customClass="PrintEditCell">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="每版打印1页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Z6-ia-lA9">
+                        <rect key="frame" x="168" y="12" width="89.5" height="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                        <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="print_unselect_icon" translatesAutoresizingMaskIntoConstraints="NO" id="cFn-HC-msv">
+                        <rect key="frame" x="131" y="14" width="16" height="16"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uOG-pX-1TM">
+                        <rect key="frame" x="157" y="0.0" width="1" height="43.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="1" id="Mk5-dv-ceO"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="7Z6-ia-lA9" firstAttribute="leading" secondItem="uOG-pX-1TM" secondAttribute="trailing" constant="10" id="6FP-Wa-p9h"/>
+                    <constraint firstItem="uOG-pX-1TM" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="LGR-Q0-rD5"/>
+                    <constraint firstItem="cFn-HC-msv" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LUU-O6-Fa1"/>
+                    <constraint firstItem="7Z6-ia-lA9" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Lau-jS-8CY"/>
+                    <constraint firstAttribute="bottom" secondItem="uOG-pX-1TM" secondAttribute="bottom" id="Mnb-gu-2SI"/>
+                    <constraint firstItem="uOG-pX-1TM" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" constant="-30" id="rgN-xD-P27"/>
+                    <constraint firstItem="uOG-pX-1TM" firstAttribute="leading" secondItem="cFn-HC-msv" secondAttribute="trailing" constant="10" id="xhC-yS-SJf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="centerXOffsetConstraint" destination="rgN-xD-P27" id="rLQ-oQ-E3R"/>
+                <outlet property="myTitleLabel" destination="7Z6-ia-lA9" id="PyW-4c-508"/>
+                <outlet property="selectedImageV" destination="cFn-HC-msv" id="tCU-SV-S5I"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="print_unselect_icon" width="16" height="16"/>
+    </resources>
+</document>
