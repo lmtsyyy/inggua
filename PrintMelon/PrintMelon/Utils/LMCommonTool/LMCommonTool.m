@@ -9,7 +9,7 @@
 #import "LMCommonTool.h"
 #import "JMTabBarController.h"
 //#import "LoginNavigationController.h"
-//#import "LoginViewController.h"
+#import "LoginViewController.h"
 //#import <SVProgressHUD.h>
 
 @implementation LMCommonTool
@@ -191,10 +191,8 @@
 }
 
 + (void)gotoLoginController {
-#if 0
     LoginViewController *vc = [[LoginViewController alloc] init];
     [UIApplication sharedApplication].keyWindow.rootViewController = vc;
-#endif
 }
 
 //压缩图片到100以内
@@ -603,7 +601,7 @@ static CGRect swapWidthAndHeight(CGRect rect) {
     return [UIFont systemFontOfSize:size weight:UIFontWeightMedium];
 }
 
-+ (void)inputAccessoryViewWithTextField:(UITextField *)textField
++ (void)inputAccessoryViewWithTextField:(id)textField
                                  target:(id)target
                                  action:(SEL)action {
     UIToolbar *topView = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, kScreenWidth, 30)];
@@ -612,7 +610,15 @@ static CGRect swapWidthAndHeight(CGRect rect) {
     UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc]initWithTitle:@"完成" style:UIBarButtonItemStyleDone target:target action:action];
     NSArray *buttonArray = [NSArray arrayWithObjects:spaceBtn,doneBtn, nil];
     [topView setItems:buttonArray];
-    [textField setInputAccessoryView:topView];
+    if([textField isKindOfClass:[UITextField class]]) {
+        UITextField *textF = textField;
+        [textF setInputAccessoryView:topView];
+    }
+    if([textField isKindOfClass:[UITextView class]]) {
+        UITextView *textV = textField;
+        [textV setInputAccessoryView:topView];
+    }
+    
 }
 
 + (NSString *)getSixBitRandomNumber {

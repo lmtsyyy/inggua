@@ -35,7 +35,7 @@
     self.userHeadImageV.layer.cornerRadius = CGRectGetHeight(self.userHeadImageV.frame) * 0.5;
     self.userHeadImageV.layer.masksToBounds = YES;
     NSString *headImageUrl = [NSString stringWithFormat:@"%@%@",HOST_URL,[AppEntity shareInstance].userImageUrl];
-    [self.userHeadImageV sd_setImageWithURL:[NSURL URLWithString:headImageUrl] placeholderImage:[UIImage imageNamed:@"head_rect_icon"] completed:nil];
+    [self.userHeadImageV sd_setImageWithURL:[NSURL URLWithString:headImageUrl] placeholderImage:[UIImage imageNamed:@"default_head_icon"] completed:nil];
     self.userNickNameLabel.text = [AppEntity shareInstance].username;
 }
 

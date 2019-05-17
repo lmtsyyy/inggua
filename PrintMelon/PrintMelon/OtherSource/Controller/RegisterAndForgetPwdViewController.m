@@ -7,6 +7,7 @@
 //
 
 #import "RegisterAndForgetPwdViewController.h"
+#import "UIButton+WebCache.h"
 
 @interface RegisterAndForgetPwdViewController ()<UITextFieldDelegate>
 {
@@ -26,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *getVerificationCodeBtn;
 @property (nonatomic, strong) NSTimer *myTimer;
 @property (nonatomic, assign) NSInteger second;
+@property (weak, nonatomic) IBOutlet UIButton *userHeadImageBtn;
 
 @end
 
@@ -82,6 +84,10 @@ static CGFloat backViewDefaultTopConstraint = 10;
     if(K_GetUserDefaultsForKey(LM_phone)) {
         self.telePhoneTextF.text = K_GetUserDefaultsForKey(LM_phone);
     }
+    
+    [self.userHeadImageBtn sd_setImageWithURL:[NSURL URLWithString:K_URL([AppEntity shareInstance].userImageUrl)] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"default_head_icon"]];
+    self.userHeadImageBtn.layer.cornerRadius = CGRectGetWidth(self.userHeadImageBtn.frame) * 0.5;
+    self.userHeadImageBtn.layer.masksToBounds = YES;
 }
 
 - (IBAction)agree:(id)sender {

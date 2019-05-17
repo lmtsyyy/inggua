@@ -22,6 +22,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) BOOL networkAvailable;
 @property (nonatomic, assign) BOOL needImmediatelyExecuteTimer;
+@property (nonatomic, assign) BOOL isInsideServiceArea;
 
 @end
 

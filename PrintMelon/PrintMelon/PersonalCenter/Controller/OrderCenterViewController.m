@@ -27,6 +27,7 @@ typedef NS_ENUM(NSInteger,OrderStatusType) {
 @property (weak, nonatomic) IBOutlet UIButton *hasPayBtn;
 @property (weak, nonatomic) IBOutlet UIButton *hasCompleteBtn;
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
+@property (nonatomic, copy) NSString *tapOption;
 
 @end
 
@@ -37,6 +38,15 @@ typedef NS_ENUM(NSInteger,OrderStatusType) {
     // Do any additional setup after loading the view from its nib.
     
     [self otherSetup];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+//    [self sendOrderListRequestWithOption:@""];
+    if([NSString isBlankString:self.tapOption]) {
+        self.tapOption = @"";
+    }
+    [self sendOrderListRequestWithOption:self.tapOption];
 }
 
 - (void)otherSetup {
@@ -50,7 +60,7 @@ typedef NS_ENUM(NSInteger,OrderStatusType) {
 //        OrderCenterModel *model = [[OrderCenterModel alloc] init];
 //        [self.dataSource addObject:model];
 //    }
-    [self sendOrderListRequestWithOption:@""];
+    
 }
 
 - (IBAction)payStatusClick:(UIButton *)sender {
@@ -59,17 +69,18 @@ typedef NS_ENUM(NSInteger,OrderStatusType) {
     CGFloat offset = 0.125;
     if(sender == self.allStatusBtn) {
         offset = 0.125;
-        [self sendOrderListRequestWithOption:@""];
+        self.tapOption = @"";
     }else if (sender == self.waitPayBtn) {
         offset = 0.375;
-        [self sendOrderListRequestWithOption:@"1"];
+        self.tapOption = @"1";
     }else if (sender == self.hasPayBtn) {
         offset = 0.625;
-        [self sendOrderListRequestWithOption:@"2"];
+        self.tapOption = @"2";
     }else if (sender == self.hasCompleteBtn) {
         offset = 0.875;
-        [self sendOrderListRequestWithOption:@"3"];
+        self.tapOption = @"3";
     }
+    [self sendOrderListRequestWithOption:self.tapOption];
     self.bottomDotLeftConstraint.constant = kScreenWidth * offset - K_BOTTOM_DOT_WIDTH;
 }
 
@@ -99,6 +110,7 @@ typedef NS_ENUM(NSInteger,OrderStatusType) {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     OrderDetailViewController *vc = [OrderDetailViewController lm_VC];
     vc.orderCenter = self.dataSource[indexPath.row];
+    vc.isPaySuccess = NO;
     [self lm_pushVCWithVC:vc];
 }
 

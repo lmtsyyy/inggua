@@ -14,9 +14,11 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
 @property (nonatomic, assign) BOOL isBatchPrinter;
+@property (nonatomic, assign) BOOL isClickBatchPrinter;
 @property (nonatomic, strong) UIButton *rightItemBtn;
 @property (weak, nonatomic) IBOutlet UIView *myBottomView;
 @property (weak, nonatomic) IBOutlet UIButton *printBtn;
+
 @end
 
 @implementation MyDocViewController
@@ -123,8 +125,9 @@
 }
 
 
-
 - (void)batchPrint {
+    self.isClickBatchPrinter = YES;
+    self.view.backgroundColor = [UIColor whiteColor];
     if(self.dataSource.count == 0) {
         [LMCommonTool showInfoWithStatus:@"没有需要打印的数据"];return;
     }
@@ -154,6 +157,8 @@
 
 - (void)cancelPrint {
     K_COMMOM_BACK_BUTTON
+    self.isClickBatchPrinter = NO;
+    self.view.backgroundColor = [UIColor colorWithHexString:@"F7F7F7"];
     self.myBottomView.hidden = YES;
     [self.rightItemBtn setTitle:@"批量打印" forState:UIControlStateNormal];
     _isBatchPrinter = NO;
@@ -175,7 +180,19 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self selectedWithTableView:tableView indexPath:indexPath];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if(self.isClickBatchPrinter) {
+        [self selectedWithTableView:tableView indexPath:indexPath];
+    }else {
+        PrintEditViewController *vc = [PrintEditViewController lm_VC];
+        vc.printEditType = PRINT_EDIT_OTHER_TYPE;
+//        NSMutableString *docIDs = [NSMutableString string];
+        MyDocModel *model = self.dataSource[indexPath.row];
+//        [docIDs appendFormat:@",%@",model.ID];
+        vc.docIDs = model.ID;
+        [self lm_pushVCWithVC:vc];
+    }
+    
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -255,7 +272,6 @@
     }
     [self.dataSource removeAllObjects];
     NSDictionary *params = @{@"uid" : [AppEntity shareInstance].userid,
-                             @"type" : type
                              };
     [[HttpRequestTool shareInstance] GET:K_URL(myDoc_URL) parameters:params success:^(id responseObject) {
         NSLog(@"responseObject = %@",responseObject);

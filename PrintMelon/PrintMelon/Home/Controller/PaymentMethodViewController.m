@@ -124,8 +124,8 @@
     self.layoutLabel.text = model.layout;
     self.fenshuLabel.text = model.number;
     self.bindLabel.text = model.binding;
-    self.packfreeLabel.text = model.packfree;
-    self.totalPriceLabel.text = model.money;
+    self.packfreeLabel.text = [NSString stringWithFormat:@"%.2f",model.packfree.floatValue];
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",model.money.floatValue];
     
 }
 

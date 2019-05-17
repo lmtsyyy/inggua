@@ -8,5 +8,6 @@ pod 'MJExtension'
 pod 'AFNetworking'
 pod 'FMDB'
 pod 'BaiduMapKit'
+pod 'MLeaksFinder'
 end
 

@@ -18,6 +18,11 @@
 {
     BOOL _isMatch;
     NSInteger _printNumber;
+    CGFloat _firstDiscount;
+    CGFloat _deliveryPrice;
+    CGFloat _actualPayPrice;
+    NSInteger _selectedRow;
+    BOOL _isSelectedAddress;
 }
 @property (weak, nonatomic) IBOutlet UIView *receiptInfoBackV;
 @property (weak, nonatomic) IBOutlet UIView *editBackV;
@@ -29,7 +34,6 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *editAlertBackVConstraintHeight;
 @property (weak, nonatomic) IBOutlet UILabel *receiptNameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *phoneLabel;
-
 @property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 @property (weak, nonatomic) IBOutlet UILabel *zhizhangLable;
 @property (weak, nonatomic) IBOutlet UILabel *fenshuLabel;
@@ -58,6 +62,12 @@
 @property (nonatomic, copy) NSMutableArray *bindArr;
 @property (nonatomic, assign) NSInteger discountPrice;//优惠金额
 @property (nonatomic, assign) NSInteger totalPage;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UILabel *firstOrderTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *firstOrderDiscountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deliveryPriceTitleLabel;
+@property (weak, nonatomic) IBOutlet UILabel *deliveryPriceLabel;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *deliveryPriceTopConstraint;
 
 @end
 
@@ -125,7 +135,7 @@ static CGFloat const cellHeight = 40;
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
+    [self otherSetup];
 }
 
 - (void)otherSetup {
@@ -144,7 +154,7 @@ static CGFloat const cellHeight = 40;
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self otherSetup];
+//    [self otherSetup];
 }
 
 - (void)hideKeyboard {
@@ -188,6 +198,7 @@ static CGFloat const cellHeight = 40;
     NSInteger fenshu = self.fenshuLabel.text.integerValue;
     self.fenshuLabel.text = @(++fenshu).stringValue;
     _printNumber = fenshu;
+    self.orderCenter.number = @(fenshu).stringValue;
     [self calculatePricce];
 }
 
@@ -197,6 +208,8 @@ static CGFloat const cellHeight = 40;
         self.fenshuLabel.text = @(--fenshu).stringValue;
     }
     _printNumber = fenshu;
+//    self.totalPage *= fenshu;
+    self.orderCenter.number = @(fenshu).stringValue;
     [self calculatePricce];
 }
 
@@ -214,9 +227,12 @@ static CGFloat const cellHeight = 40;
         }
     }
     
+    
     //    NSInteger zhizhangPage = 1;//纸张页数
 //    _printNumber = self.fenshuLabel.text.integerValue;//需要打印的份数
     NSInteger totalZhizhangPage = zhizhangPage * _printNumber;//订单总纸张数
+    self.orderCenter.page = @(totalZhizhangPage).stringValue;
+
     CGFloat goodTotalPrice = 0;//商品的总价格
     CGFloat totalPackfree = 0;//总的包装费
     CGFloat orderTotalPrice = 0;//订单的总价
@@ -238,7 +254,9 @@ static CGFloat const cellHeight = 40;
             //            CGFloat packfree = [dic[@"packfree"] floatValue];//包装费
             //            CGFloat price = [dic[@"price"] floatValue];//单价
             goodTotalPrice = totalZhizhangPage * [dic[@"price"] floatValue];
-            totalPackfree = totalZhizhangPage * [dic[@"packfree"] floatValue];
+//            totalPackfree = totalZhizhangPage * [dic[@"packfree"] floatValue];
+            totalPackfree = [dic[@"packfree"] floatValue];
+
             orderTotalPrice = goodTotalPrice + totalPackfree;
             //            orderTotalPrice = 2000;
             
@@ -290,8 +308,12 @@ static CGFloat const cellHeight = 40;
     }
     
     CGFloat actualPayPrice = orderTotalPrice - self.couponInfo.money.integerValue;//实付款
+    if(actualPayPrice >= _firstDiscount) {
+        actualPayPrice = orderTotalPrice - self.couponInfo.money.floatValue - _firstDiscount;//实付款
+    }
+    _actualPayPrice = actualPayPrice;
     self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",actualPayPrice];
-    self.pageNumLabel.text = @(zhizhangPage).stringValue;
+    self.pageNumLabel.text = @(totalZhizhangPage).stringValue;
     
     self.orderCenter.totalPackfree = @(totalPackfree).stringValue;
     self.orderCenter.total = @(goodTotalPrice).stringValue;
@@ -355,18 +377,48 @@ static CGFloat const cellHeight = 40;
     self.editAddressBackV.hidden = YES;
     self.myTableView.hidden = NO;
     self.navigationController.navigationBarHidden = YES;
-    [self.myTableView reloadData];
+    [self selectRowWithRow:_selectedRow];
+    
 }
 
 - (void)resetDataWithArr:(NSMutableArray *)arr {
     [self.dataSource removeAllObjects];
+    NSInteger i = 0;
     for (NSString *str in arr) {
         PrintEditModel *model = [[PrintEditModel alloc] init];
         model.myTitle = str;
+        
+        if(self.printEditType == PRINT_EDIT_ZHIZHANG_TYPE) {
+            if([str isEqualToString:self.zhizhangLable.text]) {
+                _selectedRow = i;
+            }
+        }else if (self.printEditType == PRINT_EDIT_FENSHU_TYPE) {
+            if([str isEqualToString:self.fenshuLabel.text]) {
+                _selectedRow = i;
+            }
+        }else if (self.printEditType == PRINT_EDIT_DANSHUANGYE_TYPE) {
+            if([str isEqualToString:self.danshuangmianLabel.text]) {
+                _selectedRow = i;
+            }
+        }else if (self.printEditType == PRINT_EDIT_COLOR_TYPE) {
+            if([str isEqualToString:self.colorLabel.text]) {
+                _selectedRow = i;
+            }
+        }else if (self.printEditType == PRINT_EDIT_LAYOUT_TYPE) {
+            if([str isEqualToString:self.layoutLabel.text]) {
+                _selectedRow = i;
+            }
+        }else if (self.printEditType == PRINT_EDIT_BIND_TYPE) {
+            if([str isEqualToString:self.bindLable.text]) {
+                _selectedRow = i;
+            }
+        }
+        
         if(str.length >= 4) {
             model.lengthGreaterThanFive = YES;
         }
         [self.dataSource addObject:model];
+        i ++;
     }
     if(self.dataSource.count == 1) {
         [self editOptionWithEditAlertVHeight:190];
@@ -391,16 +443,20 @@ static CGFloat const cellHeight = 40;
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self selectRowWithRow:indexPath.row];
+}
+
+- (void)selectRowWithRow:(NSInteger)row {
     for(int i = 0;i < self.dataSource.count;i++) {
         PrintEditModel *model = self.dataSource[i];
-        if(i == indexPath.row) {
+        if(i == row) {
             model.isSelected = YES;
         }else {
             model.isSelected = NO;
         }
     }
     
-    PrintEditModel *model = self.dataSource[indexPath.row];
+    PrintEditModel *model = self.dataSource[row];
     self.editModel = model;
     
     if(self.printEditType == PRINT_EDIT_ZHIZHANG_TYPE) {
@@ -415,13 +471,27 @@ static CGFloat const cellHeight = 40;
         self.orderCenter.binding = model.myTitle;
     }
     
-    [tableView reloadData];
+    [self.myTableView reloadData];
 }
 
 - (IBAction)confirmPrint:(id)sender {
     if(!_isMatch) {
         [LMCommonTool showInfoWithStatus:@"没有相匹配的规格哦，请重新选择"]; return;
     }
+    if(_deliveryPrice > _actualPayPrice) {
+        [LMCommonTool showInfoWithStatus:@"订单总额未达到起送价格，暂时无法下单哦！"]; return;
+    }
+    if(!_isSelectedAddress) {
+        [LMCommonTool showInfoWithStatus:@"没有选择收获地址，暂时无法下单哦！"]; return;
+    }
+    if(![AppEntity shareInstance].isInsideServiceArea) {
+        [LMCommonTool showInfoWithStatus:@"当前位置不在服务范围之内，暂时无法下单哦！"]; return;
+    }
+//    if(_firstDiscount > _actualPayPrice) {
+//        _actualPayPrice += _firstDiscount;
+//        self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",_actualPayPrice];
+//        [LMCommonTool showInfoWithStatus:@"订单总额未达到首单优惠价格，暂时不能优惠哦"]; return;
+//    }
     ConfirmOrderViewController *vc = [ConfirmOrderViewController lm_VC];
     self.orderCenter.docIDs = self.docIDs;
     vc.orderCenter = self.orderCenter;
@@ -581,6 +651,15 @@ static CGFloat const cellHeight = 40;
 }
 
 - (void)sendModifyAddressRequest {
+    if([NSString isBlankString:self.editReceiptNameLabel.text]) {
+        [LMCommonTool showInfoWithStatus:@"请输入收件人姓名"];return;
+    }
+    if(![NSString validateCellPhoneNumber:self.editPhoneLabel.text]) {
+        [LMCommonTool showInfoWithStatus:@"请输入正确的手机格式"];return;
+    }
+    if([NSString isBlankString:self.editAddressTextF.text]) {
+        [LMCommonTool showInfoWithStatus:@"请输入收件地址"];return;
+    }
     NSDictionary *params = @{@"uid" : [AppEntity shareInstance].userid,
                              @"consignee" : self.editReceiptNameLabel.text,
                              @"phone" : self.editPhoneLabel.text,
@@ -591,12 +670,13 @@ static CGFloat const cellHeight = 40;
         if(K_SUCCESS_CODE) {
             self.editGrayBackV.hidden = YES;
             NSDictionary *addressDic = responseObject[@"address"];
-            self.orderCenter.receiptName = addressDic[@"consignee"];
-            self.orderCenter.receiptPhone = addressDic[@"phone"];
-            self.orderCenter.receiptAddress = addressDic[@"address"];
+            self.orderCenter.addressInfo.consignee = addressDic[@"consignee"];
+            self.orderCenter.addressInfo.phone = addressDic[@"phone"];
+            self.orderCenter.addressInfo.address = addressDic[@"address"];
             self.receiptNameLabel.text = addressDic[@"consignee"];
             self.phoneLabel.text = addressDic[@"phone"];
             self.addressLabel.text = addressDic[@"address"];
+            self->_isSelectedAddress = YES;
         }else {
             
         }
@@ -609,6 +689,7 @@ static CGFloat const cellHeight = 40;
 - (void)setValueWithResponseObject:(id)responseObject {
     NSArray *addressArr = responseObject[@"address"];//收货地址
     AddressInfoModel *addressInfo = nil;
+    _isSelectedAddress = addressArr.count > 0 ? YES : NO;
     if(addressArr.count > 0) {
         NSDictionary *addressDic = [addressArr firstObject];
         addressInfo = [AddressInfoModel mj_objectWithKeyValues:addressDic];
@@ -675,6 +756,30 @@ static CGFloat const cellHeight = 40;
     NSDictionary *couponDic = [couponArr firstObject];
     CouponInfoModel *couponInfo = [CouponInfoModel mj_objectWithKeyValues:couponDic];
     
+    //第一次下单优惠
+    NSDictionary *userDic = responseObject[@"user"];
+    NSString *firstorder = [NSString stringWithFormat:@"%@",userDic[@"firstorder"]];
+//    firstorder = @"1";
+    //第一次下单有1.5元的优惠
+    if([firstorder isEqualToString:@"1"]) {
+        _firstDiscount = 1.5;
+        self.bottomViewHeightConstraint.constant = 150;
+        self.firstOrderTitleLabel.hidden = NO;
+        self.firstOrderDiscountLabel.hidden = NO;
+        self.deliveryPriceTopConstraint.constant = 34;
+    }else {
+        _firstDiscount = 0;
+        self.bottomViewHeightConstraint.constant = 120;
+        self.deliveryPriceTopConstraint.constant = 8;
+    }
+    
+    
+    //起送价格
+    //第一次下单优惠
+    NSDictionary *setDic = responseObject[@"set"];
+    NSString *deliveryPrice = [NSString stringWithFormat:@"%@",setDic[@"content"]];
+    _deliveryPrice = deliveryPrice.floatValue;
+    self.deliveryPriceLabel.text = [NSString stringWithFormat:@"满%.1f元起送",_deliveryPrice];
     self.coupons = [CouponInfoModel mj_objectArrayWithKeyValuesArray:couponArr];
     
     NSMutableArray *pages = [NSMutableArray array];
@@ -691,16 +796,21 @@ static CGFloat const cellHeight = 40;
     }else {
         if(self.totalPage == 1) {
             zhizhangPage = self.totalPage;
-        } {
+        }else {
             NSInteger page = self.totalPage / 2;
             zhizhangPage = (self.totalPage % 2) == 0 ? page : (page + 1);
         }
     }
     
+    
+    
     _printNumber = self.fenshuLabel.text.integerValue;//需要打印的份数
     NSInteger totalZhizhangPage = zhizhangPage * _printNumber;//订单总纸张数
+    self.orderCenter.page = @(totalZhizhangPage).stringValue;
     CGFloat goodTotalPrice = totalZhizhangPage * goodInfo.price.floatValue;//商品的总价格
-    CGFloat totalPackfree = totalZhizhangPage * goodInfo.packfree.floatValue;//总的包装费
+//    CGFloat totalPackfree = totalZhizhangPage * goodInfo.packfree.floatValue;//总的包装费
+    CGFloat totalPackfree = goodInfo.packfree.floatValue;//总的包装费
+
     CGFloat orderTotalPrice = goodTotalPrice + totalPackfree;//订单的总价
     
     
@@ -750,14 +860,19 @@ static CGFloat const cellHeight = 40;
     }
     
     
-    CGFloat actualPayPrice = orderTotalPrice - self.couponInfo.money.integerValue;//实付款
+    CGFloat actualPayPrice = orderTotalPrice - self.couponInfo.money.floatValue;//实付款
+    if(actualPayPrice >= _firstDiscount) {
+        actualPayPrice -= _firstDiscount;//实付款
+    }
+    _actualPayPrice = actualPayPrice;
     self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",actualPayPrice];
-    self.pageNumLabel.text = @(zhizhangPage).stringValue;
+    self.pageNumLabel.text = @(totalZhizhangPage).stringValue;
     
     self.orderCenter.totalPackfree = @(totalPackfree).stringValue;
     self.orderCenter.total = @(goodTotalPrice).stringValue;
     self.orderCenter.money = @(actualPayPrice).stringValue;
     self.orderCenter.orderTotalPrice = @(orderTotalPrice).stringValue;
+    
 }
 
 - (void)removeRepeatElementWithBeforeArr:(NSMutableArray *)beforeArr after:(NSMutableArray *)afterArr {

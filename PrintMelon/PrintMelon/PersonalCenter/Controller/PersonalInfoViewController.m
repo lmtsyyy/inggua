@@ -97,6 +97,23 @@
     }];
 }
 
+- (IBAction)logout:(id)sender {
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"" message:@"您确定要退出吗" preferredStyle:UIAlertControllerStyleAlert] ;
+    UIAlertAction *cancelAcrion = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [LMCommonTool gotoLoginController];
+        K_UserDefaults(LM_userid, @"");
+        K_UserDefaults(LM_username, @"");
+        K_UserDefaults(LM_userImageUrl, @"");
+    }];
+    [alertVC addAction:cancelAcrion];
+    [alertVC addAction:confirmAction];
+    [self presentViewController:alertVC animated:YES completion:nil];
+}
+
 /*
 #pragma mark - Navigation
 

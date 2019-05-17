@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -144,12 +144,6 @@
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_doc_print_icon" translatesAutoresizingMaskIntoConstraints="NO" id="957-jk-6v3">
                             <rect key="frame" x="255" y="13.5" width="79" height="69"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="满50元起送" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ix5-ju-9oA">
-                            <rect key="frame" x="144.5" y="55" width="60" height="14"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="11"/>
-                            <color key="textColor" red="1" green="0.015686274509803921" blue="0.13333333333333333" alpha="1" colorSpace="calibratedRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                     </subviews>
                     <gestureRecognizers/>
                     <constraints>
@@ -160,8 +154,6 @@
                         <constraint firstItem="uE0-XT-fJg" firstAttribute="leading" secondItem="e48-DP-p7Z" secondAttribute="trailing" constant="3" id="a0Q-YQ-Bhu"/>
                         <constraint firstItem="uE0-XT-fJg" firstAttribute="centerX" secondItem="98H-WD-BSU" secondAttribute="centerX" id="cHr-jh-8sR"/>
                         <constraint firstAttribute="trailing" secondItem="957-jk-6v3" secondAttribute="trailing" constant="15" id="dKT-XA-uBg"/>
-                        <constraint firstItem="Ix5-ju-9oA" firstAttribute="centerX" secondItem="uE0-XT-fJg" secondAttribute="centerX" id="ddc-uY-CXF"/>
-                        <constraint firstItem="Ix5-ju-9oA" firstAttribute="top" secondItem="uE0-XT-fJg" secondAttribute="bottom" constant="2" id="ep5-UL-4R9"/>
                         <constraint firstItem="e48-DP-p7Z" firstAttribute="centerY" secondItem="uE0-XT-fJg" secondAttribute="centerY" id="jtP-t5-jiw"/>
                         <constraint firstItem="957-jk-6v3" firstAttribute="centerY" secondItem="98H-WD-BSU" secondAttribute="centerY" constant="6" id="q2i-d3-owY"/>
                     </constraints>

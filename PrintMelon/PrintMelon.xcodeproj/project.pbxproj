@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39061657228A64AE00B9480B /* ZGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39061653228A64AD00B9480B /* ZGPickerView.m */; };
+		39061658228A64AE00B9480B /* LMPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 39061656228A64AD00B9480B /* LMPlaceholderTextView.m */; };
 		68DD067665BE40041AF2FA7E /* Pods_PrintMelon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B35C0E314C1418F33DFB500 /* Pods_PrintMelon.framework */; };
 		843CB153223113C60080BD19 /* PersonalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 843CB151223113C60080BD19 /* PersonalInfoViewController.m */; };
 		843CB154223113C60080BD19 /* PersonalInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 843CB152223113C60080BD19 /* PersonalInfoViewController.xib */; };
@@ -77,25 +79,18 @@
 		849F8C11222FF2F200917E58 /* RegisterAndForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849F8C0F222FF2F200917E58 /* RegisterAndForgetPwdViewController.xib */; };
 		A1029C2F223CFB7B00B062D6 /* OrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1029C2D223CFB7B00B062D6 /* OrderDetailViewController.m */; };
 		A1029C30223CFB7B00B062D6 /* OrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A1029C2E223CFB7B00B062D6 /* OrderDetailViewController.xib */; };
-		A109BEB22254FE5D008D3A2D /* 123.pptx in Resources */ = {isa = PBXBuildFile; fileRef = A109BEB12254FE5D008D3A2D /* 123.pptx */; };
-		A109BEB42254FFBF008D3A2D /* 准备起航，APP服务器搭建.pptx in Resources */ = {isa = PBXBuildFile; fileRef = A109BEB32254FFBE008D3A2D /* 准备起航，APP服务器搭建.pptx */; };
-		A109BEB622550029008D3A2D /* 基于 OkHttp和Gson 快速获取解析服务数据.ppt in Resources */ = {isa = PBXBuildFile; fileRef = A109BEB522550028008D3A2D /* 基于 OkHttp和Gson 快速获取解析服务数据.ppt */; };
 		A10D52D7223C8CD1008EEB80 /* HomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10D52D6223C8CD1008EEB80 /* HomeView.xib */; };
 		A10D52DB223CAA5D008EEB80 /* PrintEditCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D52D9223CAA5D008EEB80 /* PrintEditCell.m */; };
 		A10D52DC223CAA5D008EEB80 /* PrintEditCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10D52DA223CAA5D008EEB80 /* PrintEditCell.xib */; };
 		A10D52DF223CAC9A008EEB80 /* PrintEditModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D52DE223CAC9A008EEB80 /* PrintEditModel.m */; };
 		A10D52E3223CD729008EEB80 /* ConfirmOrderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A10D52E1223CD729008EEB80 /* ConfirmOrderViewController.m */; };
 		A10D52E4223CD729008EEB80 /* ConfirmOrderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A10D52E2223CD729008EEB80 /* ConfirmOrderViewController.xib */; };
-		A1148158223D514F00C9D820 /* ZGPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A1148157223D514F00C9D820 /* ZGPickerView.m */; };
 		A11A29DD225C3BA100FA0A54 /* BindPhoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11A29DB225C3BA100FA0A54 /* BindPhoneViewController.m */; };
 		A11A29DE225C3BA100FA0A54 /* BindPhoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A11A29DC225C3BA100FA0A54 /* BindPhoneViewController.xib */; };
 		A14E9CD722560B2800835716 /* ServiceAgreementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E9CD522560B2800835716 /* ServiceAgreementViewController.m */; };
 		A14E9CD822560B2800835716 /* ServiceAgreementViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E9CD622560B2800835716 /* ServiceAgreementViewController.xib */; };
 		A14E9CDC2256190600835716 /* InstructionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A14E9CDA2256190600835716 /* InstructionViewController.m */; };
 		A14E9CDD2256190600835716 /* InstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A14E9CDB2256190600835716 /* InstructionViewController.xib */; };
-		A14F04662247628600534A1F /* test.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A14F04652247628500534A1F /* test.pdf */; };
-		A14F0468224783A500534A1F /* 公司介绍.pdf in Resources */ = {isa = PBXBuildFile; fileRef = A14F0467224783A500534A1F /* 公司介绍.pdf */; };
-		A14F046A2247854E00534A1F /* 印瓜PRD.docx in Resources */ = {isa = PBXBuildFile; fileRef = A14F04692247854D00534A1F /* 印瓜PRD.docx */; };
 		A14F04702247ACD900534A1F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A14F046E2247ACD900534A1F /* AlipaySDK.bundle */; };
 		A14F04712247ACD900534A1F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A14F046F2247ACD900534A1F /* AlipaySDK.framework */; };
 		A14F04732247AD3700534A1F /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A14F04722247AD3700534A1F /* libc++.tbd */; };
@@ -152,6 +147,10 @@
 
 /* Begin PBXFileReference section */
 		0FFFEF03240ED220C6500C91 /* Pods-PrintMelon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrintMelon.release.xcconfig"; path = "Pods/Target Support Files/Pods-PrintMelon/Pods-PrintMelon.release.xcconfig"; sourceTree = "<group>"; };
+		39061652228A64AD00B9480B /* ZGPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGPickerView.h; sourceTree = "<group>"; };
+		39061653228A64AD00B9480B /* ZGPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGPickerView.m; sourceTree = "<group>"; };
+		39061655228A64AD00B9480B /* LMPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LMPlaceholderTextView.h; sourceTree = "<group>"; };
+		39061656228A64AD00B9480B /* LMPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LMPlaceholderTextView.m; sourceTree = "<group>"; };
 		5B35C0E314C1418F33DFB500 /* Pods_PrintMelon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PrintMelon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		822BC74B02410676D315FAA9 /* Pods-PrintMelon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PrintMelon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PrintMelon/Pods-PrintMelon.debug.xcconfig"; sourceTree = "<group>"; };
 		843CB150223113C60080BD19 /* PersonalInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalInfoViewController.h; sourceTree = "<group>"; };
@@ -282,9 +281,6 @@
 		A1029C2C223CFB7B00B062D6 /* OrderDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OrderDetailViewController.h; sourceTree = "<group>"; };
 		A1029C2D223CFB7B00B062D6 /* OrderDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OrderDetailViewController.m; sourceTree = "<group>"; };
 		A1029C2E223CFB7B00B062D6 /* OrderDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrderDetailViewController.xib; sourceTree = "<group>"; };
-		A109BEB12254FE5D008D3A2D /* 123.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = 123.pptx; sourceTree = "<group>"; };
-		A109BEB32254FFBE008D3A2D /* 准备起航，APP服务器搭建.pptx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "准备起航，APP服务器搭建.pptx"; sourceTree = "<group>"; };
-		A109BEB522550028008D3A2D /* 基于 OkHttp和Gson 快速获取解析服务数据.ppt */ = {isa = PBXFileReference; lastKnownFileType = file; path = "基于 OkHttp和Gson 快速获取解析服务数据.ppt"; sourceTree = "<group>"; };
 		A10D52D6223C8CD1008EEB80 /* HomeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeView.xib; sourceTree = "<group>"; };
 		A10D52D8223CAA5D008EEB80 /* PrintEditCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrintEditCell.h; sourceTree = "<group>"; };
 		A10D52D9223CAA5D008EEB80 /* PrintEditCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrintEditCell.m; sourceTree = "<group>"; };
@@ -294,8 +290,6 @@
 		A10D52E0223CD729008EEB80 /* ConfirmOrderViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConfirmOrderViewController.h; sourceTree = "<group>"; };
 		A10D52E1223CD729008EEB80 /* ConfirmOrderViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConfirmOrderViewController.m; sourceTree = "<group>"; };
 		A10D52E2223CD729008EEB80 /* ConfirmOrderViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfirmOrderViewController.xib; sourceTree = "<group>"; };
-		A1148156223D514F00C9D820 /* ZGPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZGPickerView.h; sourceTree = "<group>"; };
-		A1148157223D514F00C9D820 /* ZGPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZGPickerView.m; sourceTree = "<group>"; };
 		A11A29DA225C3BA100FA0A54 /* BindPhoneViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BindPhoneViewController.h; sourceTree = "<group>"; };
 		A11A29DB225C3BA100FA0A54 /* BindPhoneViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BindPhoneViewController.m; sourceTree = "<group>"; };
 		A11A29DC225C3BA100FA0A54 /* BindPhoneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BindPhoneViewController.xib; sourceTree = "<group>"; };
@@ -305,9 +299,6 @@
 		A14E9CD92256190600835716 /* InstructionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = InstructionViewController.h; sourceTree = "<group>"; };
 		A14E9CDA2256190600835716 /* InstructionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = InstructionViewController.m; sourceTree = "<group>"; };
 		A14E9CDB2256190600835716 /* InstructionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InstructionViewController.xib; sourceTree = "<group>"; };
-		A14F04652247628500534A1F /* test.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = test.pdf; sourceTree = "<group>"; };
-		A14F0467224783A500534A1F /* 公司介绍.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "公司介绍.pdf"; sourceTree = "<group>"; };
-		A14F04692247854D00534A1F /* 印瓜PRD.docx */ = {isa = PBXFileReference; lastKnownFileType = file; path = "印瓜PRD.docx"; sourceTree = "<group>"; };
 		A14F046E2247ACD900534A1F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		A14F046F2247ACD900534A1F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		A14F04722247AD3700534A1F /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -413,6 +404,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		39061651228A64AD00B9480B /* ZGPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				39061652228A64AD00B9480B /* ZGPickerView.h */,
+				39061653228A64AD00B9480B /* ZGPickerView.m */,
+			);
+			path = ZGPickerView;
+			sourceTree = "<group>";
+		};
+		39061654228A64AD00B9480B /* LMPlaceholderTextView */ = {
+			isa = PBXGroup;
+			children = (
+				39061655228A64AD00B9480B /* LMPlaceholderTextView.h */,
+				39061656228A64AD00B9480B /* LMPlaceholderTextView.m */,
+			);
+			path = LMPlaceholderTextView;
+			sourceTree = "<group>";
+		};
 		849F8AF6222CC06B00917E58 = {
 			isa = PBXGroup;
 			children = (
@@ -470,6 +479,8 @@
 		849F8B1D222CC17D00917E58 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				39061654228A64AD00B9480B /* LMPlaceholderTextView */,
+				39061651228A64AD00B9480B /* ZGPickerView */,
 				A14F046D2247ACD900534A1F /* lib */,
 				849F8B1E222CC17E00917E58 /* LMDatabaseTool */,
 				849F8B21222CC17E00917E58 /* DYLeftSlipManager */,
@@ -705,14 +716,6 @@
 		849F8BB2222CCF9500917E58 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				A109BEB522550028008D3A2D /* 基于 OkHttp和Gson 快速获取解析服务数据.ppt */,
-				A109BEB32254FFBE008D3A2D /* 准备起航，APP服务器搭建.pptx */,
-				A109BEB12254FE5D008D3A2D /* 123.pptx */,
-				A14F0467224783A500534A1F /* 公司介绍.pdf */,
-				A14F04652247628500534A1F /* test.pdf */,
-				A14F04692247854D00534A1F /* 印瓜PRD.docx */,
-				A1148156223D514F00C9D820 /* ZGPickerView.h */,
-				A1148157223D514F00C9D820 /* ZGPickerView.m */,
 				849F8BB9222CCFB700917E58 /* HomeViewController.h */,
 				849F8BBA222CCFB700917E58 /* HomeViewController.m */,
 				849F8BBB222CCFB700917E58 /* HomeViewController.xib */,
@@ -1023,7 +1026,6 @@
 				A10D52D7223C8CD1008EEB80 /* HomeView.xib in Resources */,
 				A1D0FA2922410E23008E3FB1 /* HowUseViewController.xib in Resources */,
 				843CB159223120EB0080BD19 /* ModifyNicknameViewController.xib in Resources */,
-				A14F046A2247854E00534A1F /* 印瓜PRD.docx in Resources */,
 				843CB15E2231258A0080BD19 /* AboutUsViewController.xib in Resources */,
 				849F8C11222FF2F200917E58 /* RegisterAndForgetPwdViewController.xib in Resources */,
 				A10D52DC223CAA5D008EEB80 /* PrintEditCell.xib in Resources */,
@@ -1035,11 +1037,8 @@
 				A1BD2C692248D33C0094E9B6 /* README.txt in Resources */,
 				A1DA2A42225B33F400329CB6 /* Protocol.css in Resources */,
 				A1DA2A41225B33F400329CB6 /* Reset_style.css in Resources */,
-				A14F0468224783A500534A1F /* 公司介绍.pdf in Resources */,
 				A1029C30223CFB7B00B062D6 /* OrderDetailViewController.xib in Resources */,
 				849F8BC2222CCFCB00917E58 /* PersonalCenterViewController.xib in Resources */,
-				A109BEB42254FFBF008D3A2D /* 准备起航，APP服务器搭建.pptx in Resources */,
-				A109BEB22254FE5D008D3A2D /* 123.pptx in Resources */,
 				849F8BBD222CCFB700917E58 /* HomeViewController.xib in Resources */,
 				A1DA2A43225B33F400329CB6 /* material.min.css in Resources */,
 				849F8B0A222CC06B00917E58 /* Main.storyboard in Resources */,
@@ -1051,14 +1050,12 @@
 				843CB17022323BB60080BD19 /* MyDocCell.xib in Resources */,
 				A1E5937A223DFC930010BCD1 /* OrderCenterCell.xib in Resources */,
 				843CB154223113C60080BD19 /* PersonalInfoViewController.xib in Resources */,
-				A109BEB622550029008D3A2D /* 基于 OkHttp和Gson 快速获取解析服务数据.ppt in Resources */,
 				843CB16322320C730080BD19 /* DocPrinterViewController.xib in Resources */,
 				A10D52E4223CD729008EEB80 /* ConfirmOrderViewController.xib in Resources */,
 				A1E59375223DECC50010BCD1 /* PaymentMethodViewController.xib in Resources */,
 				849F8B8F222CC17E00917E58 /* PromptView.xib in Resources */,
 				A14E9CDD2256190600835716 /* InstructionViewController.xib in Resources */,
 				A14E9CD822560B2800835716 /* ServiceAgreementViewController.xib in Resources */,
-				A14F04662247628600534A1F /* test.pdf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1073,7 +1070,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-resources.sh",
 				"${PODS_ROOT}/BaiduMapKit/BaiduMapKit/BaiduMapAPI_Map.framework/Resources/mapapi.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1084,7 +1081,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6E92EF5AB7DFC13C2BCD10C8 /* [CP] Check Pods Manifest.lock */ = {
@@ -1117,11 +1114,13 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/FBRetainCycleDetector/FBRetainCycleDetector.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/MJExtension/MJExtension.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/MLeaksFinder/MLeaksFinder.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 			);
@@ -1130,15 +1129,17 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBRetainCycleDetector.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FMDB.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJExtension.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MLeaksFinder.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PrintMelon/Pods-PrintMelon-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1175,6 +1176,7 @@
 				849F8B12222CC06D00917E58 /* main.m in Sources */,
 				849F8B86222CC17E00917E58 /* LMCompassTool.m in Sources */,
 				849F8B94222CC17E00917E58 /* UIView+LMExtension.m in Sources */,
+				39061657228A64AE00B9480B /* ZGPickerView.m in Sources */,
 				849F8C0B222FC78400917E58 /* LoginViewController.m in Sources */,
 				849F8BBC222CCFB700917E58 /* HomeViewController.m in Sources */,
 				849F8BAC222CC38F00917E58 /* BaseTableViewController.m in Sources */,
@@ -1201,7 +1203,6 @@
 				A1E59379223DFC930010BCD1 /* OrderCenterCell.m in Sources */,
 				849F8B99222CC17E00917E58 /* NSDictionary+Extension.m in Sources */,
 				849F8B83222CC17E00917E58 /* LMLoginButton.m in Sources */,
-				A1148158223D514F00C9D820 /* ZGPickerView.m in Sources */,
 				A17717EE2242438600A6C40E /* TAAbstractDotView.m in Sources */,
 				849F8C10222FF2F200917E58 /* RegisterAndForgetPwdViewController.m in Sources */,
 				A1E5937D223E051A0010BCD1 /* OrderCenterModel.m in Sources */,
@@ -1217,6 +1218,7 @@
 				A1BD2C6D2248D3AE0094E9B6 /* WXApiManager.m in Sources */,
 				849F8BA3222CC17E00917E58 /* JMBadgeValue.m in Sources */,
 				849F8B82222CC17E00917E58 /* UIViewController+LMExtension.m in Sources */,
+				39061658228A64AE00B9480B /* LMPlaceholderTextView.m in Sources */,
 				849F8B89222CC17E00917E58 /* HttpRequestTool.m in Sources */,
 				849F8B92222CC17E00917E58 /* NSString+URL.m in Sources */,
 				A10D52E3223CD729008EEB80 /* ConfirmOrderViewController.m in Sources */,
@@ -1374,9 +1376,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 56V9FFCDQA;
-				ENABLE_BITCODE = YES;
+				CODE_SIGN_STYLE = Manual;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 64FCLB63XN;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PrintMelon/Utils/lib",
@@ -1393,10 +1396,10 @@
 					"$(PROJECT_DIR)/PrintMelon/Utils/lib/WeChatSDK1.8.4",
 					"$(PROJECT_DIR)/PrintMelon/Utils/lib/WechatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inggua.printMelon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inggua.print;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = inggua_dev;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1406,10 +1409,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 56V9FFCDQA;
-				ENABLE_BITCODE = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = 64FCLB63XN;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/PrintMelon/Utils/lib",
@@ -1426,10 +1429,10 @@
 					"$(PROJECT_DIR)/PrintMelon/Utils/lib/WeChatSDK1.8.4",
 					"$(PROJECT_DIR)/PrintMelon/Utils/lib/WechatSDK",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.inggua.printMelon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.inggua.print;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = inggua_appstore;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

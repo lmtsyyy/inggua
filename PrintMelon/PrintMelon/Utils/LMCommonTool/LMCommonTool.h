@@ -64,6 +64,7 @@
 
 + (NSString *)plistFileNameWithPlistFileName:(NSString *)fileName;
 + (UIFont *)mediumFontWithSize:(CGFloat)size;
-+ (void)inputAccessoryViewWithTextField:(UITextField *)textField target:(id)target action:(SEL)action;
++ (void)inputAccessoryViewWithTextField:(id)textField target:(id)target action:(SEL)action;
 + (NSString *)getSixBitRandomNumber;
+
 @end

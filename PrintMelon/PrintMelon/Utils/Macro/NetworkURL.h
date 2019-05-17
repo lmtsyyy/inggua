@@ -33,6 +33,9 @@
 #define modifyAddress_URL @"/home/order/updateAddress"
 #define payMethod_URL @"/home/order/paymode"
 #define orderDetail_URL @"/home/order/orderinfo"
+#define deleteOrder_URL @"/home/order/delorder"
+#define modifyOrderStatus_URL @"/home/order/status"
+
 #define confirmOrder_URL @"/home/order/sures"
 #define payment_URL @"/home/order/pay"
 #define uploadFile_URL @"/home/user/uploadfile"
@@ -42,7 +45,7 @@
 #define userInfo_URL @"/home/user/info"
 #define modifyHeadImage_URL @"/home/user/updatehead"
 #define bindPhone_URL @"/home/login/bandphone"
-
+#define serviceArea_URL @"/home/index/amap"
 
 
 

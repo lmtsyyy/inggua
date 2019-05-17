@@ -51,15 +51,20 @@
 
 - (void)otherSetup {
     K_COMMOM_BACK_BUTTON
-    K_NAVIGATION_TITLE(@"如何使用")
+    NSString *title = @"";
     NSString *htmlName = @"";
     if(self.agreementType == LM_AGREEMENT_HOWUSE) {
         htmlName = @"HowToUse";
+        title = @"如何使用";
     }else if (self.agreementType == LM_AGREEMENT_SERVICE) {
         htmlName = @"Protocol";
+        title = @"服务协议";
     }else if (self.agreementType == LM_AGREEMENT_STATEMENT) {
         htmlName = @"Secret";
+        title = @"说明";
     }
+    K_NAVIGATION_TITLE(title)
+
     NSString *filePath = [[NSBundle mainBundle] pathForResource:htmlName ofType:@"html"];
     NSURL *url = [NSURL fileURLWithPath:filePath];
     NSURLRequest *urlRequest = [NSURLRequest requestWithURL:url];

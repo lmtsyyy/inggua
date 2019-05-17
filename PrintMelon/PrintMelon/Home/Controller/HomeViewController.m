@@ -11,6 +11,7 @@
 #import "SDCycleScrollView.h"
 #import "UIImageView+WebCache.h"
 #import "LMLocationManager.h"
+#import "HowUseViewController.h"
 
 @interface HomeViewController ()<SDCycleScrollViewDelegate>
 
@@ -57,6 +58,7 @@
     self.cycleScrollView.pageControlBottomOffset = -20;
     [self startLocation];
     [self sendHomeRequest];
+    
 }
 
 - (IBAction)docPrintClick:(id)sender {
@@ -73,7 +75,9 @@
 
 
 - (IBAction)howPrintClick:(id)sender {
-    
+    HowUseViewController *vc = [HowUseViewController lm_VC];
+    vc.agreementType = LM_AGREEMENT_HOWUSE;
+    [self lm_pushVCAndHidesBottomBarWhenPushedWithVC:vc];
 }
 
 - (void)sendHomeRequest {
@@ -100,16 +104,55 @@
 }
 
 - (void)startLocation {
-    self.addressNotInsideServiceLabel.hidden = NO;
-    self.addressTopConstraint.constant = -8;
+//    self.addressNotInsideServiceLabel.hidden = NO;
+//    self.addressTopConstraint.constant = -8;
     [self.locationManager startUserLocation];
     __weak typeof(self) weakSelf = self;
     [self.locationManager setGetLocationInfo:^(LMLocationEntity * _Nonnull locationEntity) {
         //        weakSelf.plPlaceTextF.text = [NSString stringWithFormat:@"%@%@%@%@%@%@",locationEntity.province,locationEntity.city,locationEntity.district,locationEntity.town,locationEntity.streetName,locationEntity.streetNumber];
         weakSelf.addressLabel.text = [NSString stringWithFormat:@"%@%@%@",locationEntity.city,locationEntity.district,locationEntity.town];
-        weakSelf.addressNotInsideServiceLabel.hidden = YES;
-        weakSelf.addressTopConstraint.constant = 0;
+        NSString *coordinate = [NSString stringWithFormat:@"%f,%f",locationEntity.longitude,locationEntity.latitude];
+        [weakSelf sendServiceAreaRequestWithCoordinate:coordinate];
+        [weakSelf.locationManager stopUserLocation];
     }];
+}
+
+- (NSString *)identifierForVendor {
+    NSString *identifierForVendor = [[UIDevice currentDevice].identifierForVendor UUIDString];
+    return identifierForVendor;
+}
+
+
+- (void)sendServiceAreaRequestWithCoordinate:(NSString *)coordinate {
+    NSDictionary *params = @{@"location" : coordinate,
+                             @"diu" : [self identifierForVendor]
+                             };
+    __weak typeof(self) weakSelf = self;
+    [[HttpRequestTool shareInstance] POST:K_URL(serviceArea_URL) parameters:params success:^(id responseObject) {
+        NSLog(@"responseObject = %@",responseObject);
+        NSString *errcode = responseObject[@"errcode"];
+        
+        if(errcode.integerValue == 0) { //成功
+            NSDictionary *dataDic = responseObject[@"data"];
+            NSString *status = dataDic[@"status"];
+            if(status.integerValue == 0) {
+                NSArray *serviceAreaArr = dataDic[@"fencing_event_list"];
+                [AppEntity shareInstance].isInsideServiceArea = serviceAreaArr.count > 0 ? YES : NO;
+                if([AppEntity shareInstance].isInsideServiceArea) {
+                    weakSelf.addressNotInsideServiceLabel.hidden = YES;
+                    weakSelf.addressTopConstraint.constant = 0;
+                }
+            }
+        }else {
+            [LMCommonTool showErrorWithStatus:responseObject[@"errmsg"]];
+        }
+    } failure:^(NSError *error) {
+    }];
+}
+
+- (void)dealloc {
+    NSLog(@"%@--dealloc",NSStringFromClass([self class]));
+    self.locationManager = nil;
 }
 
 /*

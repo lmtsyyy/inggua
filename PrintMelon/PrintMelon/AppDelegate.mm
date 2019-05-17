@@ -20,29 +20,36 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
-    self.window.rootViewController = [[LoginViewController alloc] init];
-//     [LMCommonTool gotoMainController];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//        [self aaaWithArr:nil];
-    });
-//    [self aaaWithArr:nil];
     [self wxRegisterApp];
     [self baiduMapSetup];
-
+    [self gotoMainController];
+    
     return YES;
 }
+
+- (void)gotoMainController {
+    NSString *userid = K_GetUserDefaultsForKey(LM_userid);
+    if(![NSString isBlankString:userid]) {
+        [LMCommonTool gotoMainController];
+        [AppEntity shareInstance].userid = K_GetUserDefaultsForKey(LM_userid);
+        [AppEntity shareInstance].username = K_GetUserDefaultsForKey(LM_username);
+        [AppEntity shareInstance].userImageUrl = K_GetUserDefaultsForKey(LM_userImageUrl);
+    }else {
+        [LMCommonTool gotoLoginController];
+    }
+}
+
      
 - (void)wxRegisterApp {
- //向微信注册
- [WXApi registerApp:WX_APP_ID enableMTA:YES];
+    //向微信注册
+    [WXApi registerApp:WX_APP_ID];
 }
 
 - (void)baiduMapSetup {
@@ -136,6 +143,7 @@
             }
             
             [[HttpRequestTool shareInstance] POST:K_URL(uploadFile_URL) parameter:params data:fileData name:@"ufile[]" fileName:fileName mimeType:mimeType success:^(id responseObject) {
+
                 [LMCommonTool showSuccessWithStatus:responseObject[@"msg"]];
             } failure:^(NSError *error) {
 
@@ -171,14 +179,14 @@
     // 文件路径
     NSString *path1 = [[NSBundle mainBundle] pathForResource:@"准备起航，APP服务器搭建.pptx" ofType:nil];
     NSString *path2 = [[NSBundle mainBundle] pathForResource:@"head2.png" ofType:nil];
-    NSArray *array = @[path1];
+//    NSArray *array = @[path1];
     
     // 字段名
     NSString *fieldName = @"ufile[]";
     // 数据字典
     NSDictionary *dict = @{@"uid":[AppEntity shareInstance].userid};
     // 上传文件
-    [self uploadFiles:netUrl fieldName:fieldName filePaths:array params:dict];
+    [self uploadFiles:netUrl fieldName:fieldName filePaths:arr params:dict];
 }
 
 // 上传多个文件

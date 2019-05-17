@@ -26,6 +26,7 @@
 - (void)otherSetup {
     K_COMMOM_BACK_BUTTON;
     K_NAVIGATION_TITLE(@"修改昵称")
+    self.nickNameTextF.text = [AppEntity shareInstance].username;
 }
 
 - (IBAction)save:(id)sender {

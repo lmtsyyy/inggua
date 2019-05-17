@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIView *wpsInputBackV;
 @property (weak, nonatomic) IBOutlet UIView *moreInputBackV;
 @property (strong, nonatomic) UIDocumentInteractionController *documentController;
+@property (weak, nonatomic) IBOutlet UIView *fileBackV;
 
 @end
 
@@ -34,7 +35,7 @@
 - (void)otherSetup {
     [self lm_setupNaviCommonBackBarItemWithImageName:nil];
     [self lm_setupNaviTitleViewWithTitle:@"文档打印" titleColor:nil];
-    NSArray *views = @[self.wechatInputBackV,self.qqInputBackV,self.wpsInputBackV,self.moreInputBackV];
+    NSArray *views = @[self.fileBackV,self.wechatInputBackV,self.qqInputBackV,self.wpsInputBackV,self.moreInputBackV];
     for (UIView *view in views) {
         view.layer.shadowColor = [UIColor colorWithHexString:@"000000" alpha:0.1].CGColor;
         view.layer.shadowOffset = CGSizeMake(0,1);
@@ -43,24 +44,6 @@
         view.layer.cornerRadius = 5.8;
     }
     
-}
-
-- (IBAction)wordClick:(id)sender {
-    [self pushVCWithDocType:LM_MYDOC_DOC_TYPE];
-}
-
-- (IBAction)pdfClick:(id)sender {
-    [self pushVCWithDocType:LM_MYDOC_PDF_TYPE];
-}
-
-- (IBAction)pptClick:(id)sender {
-    [self pushVCWithDocType:LM_MYDOC_PPT_TYPE];
-}
-
-- (void)pushVCWithDocType:(MyDocType)docType {
-    MyDocViewController *vc = [MyDocViewController lm_VC];
-    vc.myDocType = docType;
-    [self lm_pushVCAndHidesBottomBarWhenPushedWithVC:vc];
 }
 
 - (IBAction)wechatClick:(id)sender {
@@ -81,8 +64,13 @@
     }
 }
 
+- (IBAction)fileDisplayAction:(id)sender {
+    MyDocViewController *vc = [MyDocViewController lm_VC];
+    [self lm_pushVCAndHidesBottomBarWhenPushedWithVC:vc];
+}
+
 - (IBAction)moreClick:(id)sender {
-    
+    [LMCommonTool showInfoWithStatus:@"自行选择对应APP导入即可"];
 }
 
 - (BOOL)openOtherAppWithSchemeStr:(NSString *)schemeStr {

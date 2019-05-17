@@ -21,6 +21,7 @@ typedef NS_ENUM(NSInteger,OrderPaymentStatus) {
 
 @property (nonatomic, assign) OrderPaymentStatus paymentStatus;
 @property (nonatomic, strong) OrderCenterModel *orderCenter;
+@property (nonatomic, assign) BOOL isPaySuccess;
 
 @end
 

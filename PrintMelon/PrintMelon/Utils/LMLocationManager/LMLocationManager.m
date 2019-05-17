@@ -189,7 +189,7 @@
         
         if(self.getLocationInfo) {
             self.getLocationInfo(entity);
-            [self stopUserLocation];
+//            [self stopUserLocation];
         }
     }
     

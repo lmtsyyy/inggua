@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,6 +16,8 @@
                 <outlet property="danshuangmianLabel" destination="wMh-zA-Qcr" id="FJI-5w-6st"/>
                 <outlet property="fenshuLabel" destination="y86-il-lN1" id="m6v-iL-JDn"/>
                 <outlet property="layoutLabel" destination="VEI-rD-qRY" id="mLZ-qJ-vHx"/>
+                <outlet property="packagePriceLabel" destination="Xqr-jU-4CE" id="fTu-Lh-ped"/>
+                <outlet property="totalPriceLabel" destination="LYi-Xn-31f" id="jke-Cp-Hbw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="zhangshuLabel" destination="Ml2-Ri-fuI" id="uvL-y6-hIH"/>
                 <outlet property="zhizhangLabel" destination="5l5-mm-HdM" id="LOw-cU-TgG"/>
@@ -284,6 +286,9 @@
                     <state key="normal" title="查看订单" backgroundImage="order_check_order_bg">
                         <color key="titleColor" red="0.99215686274509807" green="0.48627450980392156" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="lookOrderDetail:" destination="-1" eventType="touchUpInside" id="Gwn-Ko-g01"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p4A-mh-Arp">
                     <rect key="frame" x="28" y="521" width="319" height="63"/>
@@ -292,6 +297,9 @@
                     <state key="normal" title="回到首页" backgroundImage="common_button_bg">
                         <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
+                    <connections>
+                        <action selector="gobackHomePage:" destination="-1" eventType="touchUpInside" id="n5g-Cj-XqR"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

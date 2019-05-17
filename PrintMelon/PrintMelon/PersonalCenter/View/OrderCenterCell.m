@@ -61,8 +61,8 @@ static OrderCenterViewController *_vc;
     self.colorLabel.text = orderCenterModel.color;
     self.layoutLabel.text = orderCenterModel.layout;
     self.fenshuLabel.text = orderCenterModel.number;
-    self.packagePriceLabel.text = orderCenterModel.packfree;
-    self.totalPriceLabel.text = orderCenterModel.total;
+    self.packagePriceLabel.text = [NSString stringWithFormat:@"%.2f",orderCenterModel.packfree.floatValue];
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",orderCenterModel.total.floatValue];;
     
     self.payStatusBtn.hidden = NO;
     orderCenterModel.cellHeight = 470;

@@ -8,6 +8,7 @@
 
 #import "PaymentSuccessViewController.h"
 #import "OrderCenterModel.h"
+#import "OrderDetailViewController.h"
 
 @interface PaymentSuccessViewController ()
 
@@ -17,6 +18,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *colorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *layoutLabel;
 @property (weak, nonatomic) IBOutlet UILabel *fenshuLabel;
+@property (weak, nonatomic) IBOutlet UILabel *packagePriceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *totalPriceLabel;
 @end
 
 @implementation PaymentSuccessViewController
@@ -37,6 +40,19 @@
     self.colorLabel.text = self.orderCenter.color;
     self.layoutLabel.text = self.orderCenter.layout;
     self.fenshuLabel.text = self.orderCenter.number;
+    self.packagePriceLabel.text = [NSString stringWithFormat:@"%.2f",self.orderCenter.totalPackfree.floatValue];
+    self.totalPriceLabel.text = [NSString stringWithFormat:@"%.2f",self.orderCenter.money.floatValue];
+}
+
+- (IBAction)lookOrderDetail:(id)sender {
+    OrderDetailViewController *vc = [OrderDetailViewController lm_VC];
+    vc.orderCenter = self.orderCenter;
+    vc.isPaySuccess = YES;
+    [self lm_pushVCWithVC:vc];
+}
+
+- (IBAction)gobackHomePage:(id)sender {
+    [LMCommonTool gotoMainController];
 }
 
 /*

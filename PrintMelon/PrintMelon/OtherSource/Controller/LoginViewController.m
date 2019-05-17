@@ -12,6 +12,7 @@
 #import "WXApiManager.h"
 #import "WechatAuthSDK.h"
 #import "BindPhoneViewController.h"
+#import "UIButton+WebCache.h"
 
 #define WX_BASE_URL @"https://api.weixin.qq.com/sns/"
 
@@ -35,6 +36,11 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *backVTopConstrait;
 @property (nonatomic, strong) NSTimer *myTimer;
 @property (nonatomic, assign) NSInteger second;
+@property (weak, nonatomic) IBOutlet UIButton *userHeadImageBtn;
+@property (weak, nonatomic) IBOutlet UIButton *wxLoginBtn;
+@property (weak, nonatomic) IBOutlet UILabel *wxLoginLabel;
+@property (weak, nonatomic) IBOutlet UIView *wxLoginLeftLineV;
+@property (weak, nonatomic) IBOutlet UIView *wxLoginRightLineV;
 
 @end
 
@@ -59,12 +65,25 @@ static CGFloat backViewDefaultTopConstraint = 10;
     
     self.accountPwdBackV.layer.cornerRadius = 6.0;
     self.pwdTextF.placeholder = @"请输入验证码";
+    self.pwdTextF.secureTextEntry = NO;
     _type = 1;//默认验证码登录
     if(K_GetUserDefaultsForKey(LM_phone)) {
         self.telePhoneTextF.text = K_GetUserDefaultsForKey(LM_phone);
     }
     [WXApiManager sharedManager].delegate = self;
     [LMCommonTool inputAccessoryViewWithTextField:self.pwdTextF target:self action:@selector(endEdit)];
+    
+    [self.userHeadImageBtn sd_setImageWithURL:[NSURL URLWithString:K_URL([AppEntity shareInstance].userImageUrl)] forState:UIControlStateNormal placeholderImage:[UIImage imageNamed:@"default_head_icon"]];
+    self.userHeadImageBtn.layer.cornerRadius = CGRectGetWidth(self.userHeadImageBtn.frame) * 0.5;
+    self.userHeadImageBtn.layer.masksToBounds = YES;
+    
+    if(![WXApi isWXAppInstalled]) {
+        self.wxLoginBtn.hidden = YES;
+        self.wxLoginLabel.hidden = YES;
+        self.wxLoginLeftLineV.hidden = YES;
+        self.wxLoginRightLineV.hidden = YES;
+    }
+    
 }
 
 - (void)timeChange {
@@ -93,6 +112,7 @@ static CGFloat backViewDefaultTopConstraint = 10;
         self.forgetPwdBtn.hidden = YES;
         self.pwdOrCodeLabel.text = @"验证码";
         self.pwdTextF.placeholder = @"请输入验证码";
+        self.pwdTextF.secureTextEntry = NO;
         _type = 1;
 //        self.pwdTextF.keyboardType = UIKeyboardTypeNumberPad;
     }else if (sender.view == self.pwdBackV) {
@@ -105,6 +125,7 @@ static CGFloat backViewDefaultTopConstraint = 10;
         self.forgetPwdBtn.hidden = NO;
         self.pwdOrCodeLabel.text = @"密码";
         self.pwdTextF.placeholder = @"请输入密码";
+        self.pwdTextF.secureTextEntry = YES;
         _type = 2;
 //        self.pwdTextF.keyboardType = UIKeyboardTypeDefault;
     }
@@ -180,6 +201,8 @@ static CGFloat backViewDefaultTopConstraint = 10;
     
     
     [self sendLoginRequest];
+    
+    
 }
 
 - (IBAction)registerUser:(id)sender {
@@ -212,10 +235,14 @@ static CGFloat backViewDefaultTopConstraint = 10;
         if(K_SUCCESS_CODE) {//登录成功
             [LMCommonTool gotoMainController];
             NSDictionary *userInfo = responseObject[@"user"];
-            [AppEntity shareInstance].userid = userInfo[@"id"];
+            [AppEntity shareInstance].userid = [NSString stringWithFormat:@"%@",userInfo[@"id"]];
             [AppEntity shareInstance].username = userInfo[@"username"];
             [AppEntity shareInstance].userImageUrl = userInfo[@"headimg"];
             K_UserDefaults(LM_phone, userInfo[@"phone"]);
+            K_UserDefaults(LM_userid, [AppEntity shareInstance].userid);
+            K_UserDefaults(LM_username, [AppEntity shareInstance].username);
+            K_UserDefaults(LM_userImageUrl, [AppEntity shareInstance].userImageUrl);
+            [[NSUserDefaults standardUserDefaults] synchronize];
         }else {//注册失败
             K_Show_Error_Tip
         }
@@ -229,35 +256,31 @@ static CGFloat backViewDefaultTopConstraint = 10;
 //微信登录
 - (IBAction)wxLogin:(id)sender {
 //    [self sendWxLoginRequest];
-    if([WXApi isWXAppInstalled]) {
-        NSString *accessToken = K_GetUserDefaultsForKey(WX_ACCESS_TOKEN);
-        NSString *openid = K_GetUserDefaultsForKey(WX_OPEN_ID);
-        if(![NSString isBlankString:accessToken] && ![NSString isBlankString:openid]) {
-            NSString *refreshToken = K_GetUserDefaultsForKey(WX_REFRESH_TOKEN);
-            NSString *refreshUrlStr = [NSString stringWithFormat:@"%@/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@",WX_BASE_URL,WX_APP_ID,refreshToken];
-            [[HttpRequestTool shareInstance] GET:refreshUrlStr parameters:nil success:^(id responseObject) {
-                NSLog(@"responseObject = %@",responseObject);
-                NSString *accessToken = responseObject[WX_ACCESS_TOKEN];
-                // 如果accessToken为空,说明accessToken也过期了,反之则没有过期
-                if (![NSString isBlankString:accessToken]) {
-                    // 更新access_token、refresh_token、open_id
-                    [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:WX_ACCESS_TOKEN];
-                    [[NSUserDefaults standardUserDefaults] setObject:responseObject[WX_OPEN_ID] forKey:WX_OPEN_ID];
-                    [[NSUserDefaults standardUserDefaults] setObject:responseObject[WX_REFRESH_TOKEN] forKey:WX_REFRESH_TOKEN];
-                    [[NSUserDefaults standardUserDefaults] synchronize];
-                    [self wechatLoginByRequestForUserInfo];
-                }
-                else {
-                    [self sendAuthRequest];
-                }
-            } failure:^(NSError *error) {
-                
-            }];
-        }else {
-            [self sendAuthRequest];
-        }
+    NSString *accessToken = K_GetUserDefaultsForKey(WX_ACCESS_TOKEN);
+    NSString *openid = K_GetUserDefaultsForKey(WX_OPEN_ID);
+    if(![NSString isBlankString:accessToken] && ![NSString isBlankString:openid]) {
+        NSString *refreshToken = K_GetUserDefaultsForKey(WX_REFRESH_TOKEN);
+        NSString *refreshUrlStr = [NSString stringWithFormat:@"%@/oauth2/refresh_token?appid=%@&grant_type=refresh_token&refresh_token=%@",WX_BASE_URL,WX_APP_ID,refreshToken];
+        [[HttpRequestTool shareInstance] GET:refreshUrlStr parameters:nil success:^(id responseObject) {
+            NSLog(@"responseObject = %@",responseObject);
+            NSString *accessToken = responseObject[WX_ACCESS_TOKEN];
+            // 如果accessToken为空,说明accessToken也过期了,反之则没有过期
+            if (![NSString isBlankString:accessToken]) {
+                // 更新access_token、refresh_token、open_id
+                [[NSUserDefaults standardUserDefaults] setObject:accessToken forKey:WX_ACCESS_TOKEN];
+                [[NSUserDefaults standardUserDefaults] setObject:responseObject[WX_OPEN_ID] forKey:WX_OPEN_ID];
+                [[NSUserDefaults standardUserDefaults] setObject:responseObject[WX_REFRESH_TOKEN] forKey:WX_REFRESH_TOKEN];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+                [self wechatLoginByRequestForUserInfo];
+            }
+            else {
+                [self sendAuthRequest];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
     }else {
-        [LMCommonTool showErrorWithStatus:@"您还没有安装微信哦"];
+        [self sendAuthRequest];
     }
     
 }
@@ -272,9 +295,18 @@ static CGFloat backViewDefaultTopConstraint = 10;
         if(K_SUCCESS_CODE) {
             
             NSDictionary *userInfo = responseObject[@"user"];
-            [AppEntity shareInstance].userid = userInfo[@"id"];
+            [AppEntity shareInstance].userid = [NSString stringWithFormat:@"%@",userInfo[@"id"]];
+
             [AppEntity shareInstance].username = userInfo[@"username"];
             [AppEntity shareInstance].userImageUrl = userInfo[@"headimg"];
+            [AppEntity shareInstance].phone = userInfo[@"phone"];
+            if(![NSString isBlankString:[AppEntity shareInstance].phone]) {
+                K_UserDefaults(LM_phone, [AppEntity shareInstance].phone);
+            }
+            K_UserDefaults(LM_userid, [AppEntity shareInstance].userid);
+            K_UserDefaults(LM_username, [AppEntity shareInstance].username);
+            K_UserDefaults(LM_userImageUrl, [AppEntity shareInstance].userImageUrl);
+            [[NSUserDefaults standardUserDefaults] synchronize];
             NSString *phone = userInfo[@"phone"];
             if([NSString isBlankString:phone]) {//绑定手机号
                 BindPhoneViewController *vc = [BindPhoneViewController lm_VC];

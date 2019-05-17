@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -118,6 +118,20 @@
                         <outletCollection property="gestureRecognizers" destination="yUr-nh-Q7r" appends="YES" id="Hfb-KY-U3y"/>
                     </connections>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tXm-x2-EXR">
+                    <rect key="frame" x="30" y="314" width="315" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="tXm-x2-EXR" secondAttribute="height" multiplier="315:64" id="sde-lm-0cP"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="-15" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="退出" backgroundImage="common_button_bg">
+                        <color key="titleColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="logout:" destination="-1" eventType="touchUpInside" id="nR8-EL-B4N"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -126,6 +140,9 @@
                 <constraint firstItem="0cs-g6-dVG" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="24" id="L4F-r5-sv5"/>
                 <constraint firstItem="L8b-tk-ZoR" firstAttribute="height" secondItem="0cs-g6-dVG" secondAttribute="height" id="Vw9-cZ-lNu"/>
                 <constraint firstItem="L8b-tk-ZoR" firstAttribute="top" secondItem="0cs-g6-dVG" secondAttribute="bottom" constant="30" id="Y4X-i8-LOY"/>
+                <constraint firstItem="tXm-x2-EXR" firstAttribute="top" secondItem="L8b-tk-ZoR" secondAttribute="bottom" constant="120" id="aqk-E7-BCI"/>
+                <constraint firstItem="tXm-x2-EXR" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="30" id="dAz-tN-Vi7"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="tXm-x2-EXR" secondAttribute="trailing" constant="30" id="dn0-Zt-RN9"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="0cs-g6-dVG" secondAttribute="trailing" id="mzS-iX-XeA"/>
                 <constraint firstItem="L8b-tk-ZoR" firstAttribute="leading" secondItem="0cs-g6-dVG" secondAttribute="leading" id="r8e-ea-zXx"/>
             </constraints>
@@ -144,6 +161,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
+        <image name="common_button_bg" width="290.5" height="63.5"/>
         <image name="common_right_arrow" width="9.5" height="17"/>
         <image name="head_rect_icon" width="44" height="44"/>
         <image name="personal_center_head_icon" width="21.5" height="23"/>

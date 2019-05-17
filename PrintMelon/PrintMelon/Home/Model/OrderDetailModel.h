@@ -32,6 +32,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *addtime;
 @property (nonatomic, copy) NSString *deliverytime;
 @property (nonatomic, copy) NSString *finishtime;
+@property (nonatomic, copy) NSString *apptime;
+
 @property (nonatomic, copy) NSString *money;
 @property (nonatomic, strong) DispatchStaffModel *staff;
 

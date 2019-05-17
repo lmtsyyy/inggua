@@ -8,8 +8,12 @@
 
 #import "AboutUsViewController.h"
 #import "HowUseViewController.h"
+#import "UIImageView+WebCache.h"
 
 @interface AboutUsViewController ()
+
+@property (weak, nonatomic) IBOutlet UIImageView *userHeadImageV;
+@property (weak, nonatomic) IBOutlet UILabel *currentVersionLabel;
 
 @end
 
@@ -25,6 +29,10 @@
 - (void)otherSetup {
     [self lm_setupNaviCommonBackBarItemWithImageName:nil];
     [self lm_setupNaviTitleViewWithTitle:@"关于我们" titleColor:nil];
+    [self.userHeadImageV sd_setImageWithURL:[NSURL URLWithString:K_URL([AppEntity shareInstance].userImageUrl)] placeholderImage:[UIImage imageNamed:@"default_head_icon"] completed:nil];
+    self.userHeadImageV.layer.cornerRadius = CGRectGetWidth(self.userHeadImageV.frame) * 0.5;
+    self.userHeadImageV.layer.masksToBounds = YES;
+    self.currentVersionLabel.text = [NSString stringWithFormat:@"当前版本%@",[LMCommonTool appVersion]];
 }
 
 - (IBAction)introductionClick:(id)sender {
@@ -42,6 +50,7 @@
 - (IBAction)versionUpdateClick:(id)sender {
     
 }
+
 
 
 
